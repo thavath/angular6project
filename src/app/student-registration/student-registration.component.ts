@@ -12,7 +12,7 @@ import { Student } from '../services/student.model';
 })
 export class StudentRegistrationComponent implements OnInit {
 
-  constructor(private studentService: StudentsService, private tostr: ToastrService) { }
+  constructor(public studentService: StudentsService, private tostr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();
