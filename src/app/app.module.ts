@@ -38,7 +38,7 @@ const forRoutes: Routes = [
   { path : 'student/detail/:$key', component: DetailComponent },
   { path : 'student/edit/:$key', component: HomeComponent },
   { path : '', component: HomeComponent },
-  { path: '**', component: HomeComponent }
+  { path: '**', component: LoginComponent }
 
 ]
 
