@@ -1,2 +1,56 @@
+
 export class Student {
+    $key: string;
+    id: string;
+    english_name: string;
+    khmer_name: string;
+    japanese_name: string;
+    nationality: string;
+    place_of_birth: string;
+    card_id: string;
+    khmer_salary: number;
+    education: string;
+    date_of_birth: Date;
+    age: number;
+    gender: string;
+    state: string;
+    blood_type: string;
+    vision: string;
+    interest: string;
+    year_of_experience: string;
+    married: string;
+    position: string;
+    behavior: string;
+    went_to_japan: string;
+    japanese_conversation: string;
+    height: string;
+    weight: string;
+    current_address: string;
+    reason: string;
+    arrang_money: string;
+    sending_company: string;
+    japanese_level: string;
+    field_of_work: string;
+    date_to_japan: Date;
+    prefecture: string;
+    zip_code: string;
+    address_in_japan: string;
+    grammer_level: string;
+    idiom_level: string;
+    conversation_level: string;
+    life_attitude: string;
+    course_type: string;
+    last_peroid_of_study: string;
+    university_name: string;
+    subject_name: string;
+    teacher_name: string;
+    book_type: string;
+    start_date: Date;
+    end_date: Date;
+    status: string;
+    description: string;
+
+    admin_name: string;
+    email_address: string;
+    phone_number: string;
 }

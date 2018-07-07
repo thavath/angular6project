@@ -1,3 +1,36 @@
-<p>
-  student-list works!
-</p>
+<div class="container" style=" margin-top: 10px;">
+        <div style="margin: 0px; padding: 20px ;background-color: white; height: 1000px;">
+        <h3>Student list</h3>
+            <br>
+      <table class="table table-hover table-responsive">
+        <thead class="bg-primary">
+        <tr>
+          <th>Name</th>
+          <!-- <th>Age</th> -->
+          <!-- <th>Gender</th> -->
+          <th>Position</th>
+          <th>Company</th>
+          <!-- <th>Email</th> -->
+          <th>Contact</th>
+          <th>Detail</th>    
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentList">
+          <td>{{ student.english_name }}</td>
+          <!-- <td>{{ student.age }}</td> -->
+          <!-- <td>{{ student.gender }}</td> -->
+          <td>{{ student.position }}</td>
+          <td>{{ student.sending_company }}</td>
+          <!-- <td>{{ student.email_address }}</td>  -->
+          <td>{{ student.phone_number }}</td> 
+          <td><a class="btn" (click)="onSelect(student)"> <i class="fa fa-eye"></i></a></td>
+          <td><a [routerLink]="['/student/edit', student.$key ]" class="btn" (click)="onEdit(student)"> <i class="fa fa-edit"></i></a></td>
+          <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td>
+        </tr>
+    </tbody>
+      </table>
+      </div>
+    </div>

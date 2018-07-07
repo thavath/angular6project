@@ -1,0 +1,11 @@
+.textCenter {
+    text-align: center;
+    padding: 5px;
+    background-color: aquamarine;
+}
+.pdetail {
+    text-align: center;
+    margin: 0px;
+    background-color:lightseagreen;
+    padding: 10px;
+}

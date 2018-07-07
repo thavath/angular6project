@@ -1,5 +1,6 @@
+import { StudentsService } from './services/students.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -11,6 +12,8 @@ import { AttendenceComponent } from './attendence/attendence.component';
 import { AsideComponent } from './layout/aside/aside.component';
 import { ArticleComponent } from './layout/article/article.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -21,6 +24,10 @@ import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './authetication/login/login.component';
 import { SingupComponent } from './authetication/singup/singup.component';
+import { ToastrModule } from 'ngx-toastr';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 const forRoutes: Routes = [
   { path : 'fujiyama', component: FujiyamaComponent },
   { path : 'home', component: HomeComponent },
@@ -28,8 +35,11 @@ const forRoutes: Routes = [
   { path : 'signup', component: SingupComponent },
   { path : 'student', component: StudentListComponent },
   { path : 'attendance', component: AttendenceComponent },
-  { path : 'student/:id/detail', component: DetailComponent },
-  { path : ' ', component: AppComponent }
+  { path : 'student/detail/:$key', component: DetailComponent },
+  { path : 'student/edit/:$key', component: HomeComponent },
+  { path : '', component: HomeComponent },
+  { path: '**', component: HomeComponent }
+
 ]
 
 @NgModule({
@@ -50,14 +60,18 @@ const forRoutes: Routes = [
     SingupComponent
   ],
   imports: [
+    ToastrModule.forRoot(),
     BrowserModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     FormsModule,
-    RouterModule.forRoot(forRoutes)
+    RouterModule.forRoot(forRoutes),
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [ StudentsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

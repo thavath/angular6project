@@ -1,35 +1,41 @@
 
-<div class="container" style="background-color: white; margin-top: 5px">
-    <h3 class="text-center">Fujiyama registered</h3>
-    <br><br>
-    <table class="table table-hover table-responsive">
-      <tr class="thead-light">
-        <th>ID</th>
-        <th>Full Name</th>
-        <th>Gender</th>
-        <th>Birthday</th>
-        <th>Phone Number</th>
-        <th>Email </th>
-        <th>Duration</th>
-        <th>Correct </th>
-        <th>Incorrect </th>
-        <th>Status</th>
-      </tr>
-      <tr *ngFor="let fujiyama of fujiyamaList,index as i">
-        <td *ngIf="i<9">ST00{{ i+1 }}</td>
-        <td *ngIf="i>=9">ST0{{ i+1 }}</td>
-        <td>{{ fujiyama.fullName }}</td>
-        <!-- <td>{{ fujiyama.PlayerLearnDetail }}</td> -->
-        <td>{{ fujiyama.gender }}</td>
-        <td>{{ fujiyama.dateOfBirth }}</td>
-        <td>{{ fujiyama.phoneNumber }}</td>
-        <td>{{ fujiyama.email }}</td>
-        <td>{{ (fujiyama.duration | number)/360 | number:'' }} h</td>
-        <td>{{ fujiyama.correctAnswer }}</td>
-        <td>{{ fujiyama.incorrectAnswer }}</td>
-        <td>{{ fujiyama.status }}</td>
-        <!-- <td><a class="btn" (click)="onEdit(student)"> <i class="fa fa-edit"></i></a></td>
-        <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td> -->
-      </tr>
-    </table>
+<div class="container" style=" margin-top: 10px;">
+  <div style="margin: 0px; padding: 20px ;background-color: white;">
+      <h3 class="text-center">Fujiyama registered</h3>
+      <br><br>
+      <table class="table table-hover table-responsive table-bordered">
+        <thead class="bg-primary">
+          <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Gender</th>
+            <th>Birthday</th>
+            <th>Phone Number</th>
+            <th>Email </th>
+            <th>Duration</th>
+            <th>Correct </th>
+            <th>Incorrect </th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fujiyama of fujiyamaList,index as i">
+            <td *ngIf="i<9">ST00{{ i+1 }}</td>
+            <td *ngIf="i>=9">ST0{{ i+1 }}</td>
+            <td>{{ fujiyama.fullName }}</td>
+            <!-- <td>{{ fujiyama.PlayerLearnDetail }}</td> -->
+            <td>{{ fujiyama.gender }}</td>
+            <td>{{ fujiyama.dateOfBirth }}</td>
+            <td>{{ fujiyama.phoneNumber }}</td>
+            <td>{{ fujiyama.email }}</td>
+            <td>{{ (fujiyama.duration | number)/360 | number:'' }} h</td>
+            <td>{{ fujiyama.correctAnswer }}</td>
+            <td>{{ fujiyama.incorrectAnswer }}</td>
+            <td>{{ fujiyama.status }}</td>
+            <!-- <td><a class="btn" (click)="onEdit(student)"> <i class="fa fa-edit"></i></a></td>
+            <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td> -->
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
