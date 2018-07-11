@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## How to deploy this app on heroku
 
-# step one go to package.jos and add dependencies
+# step one go to package.jon and add dependencies
 
 "@angular/compiler-cli": "^6.0.3",
     "@angular-devkit/build-angular": "~0.6.8",
