@@ -25,3 +25,33 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## How to deploy this app on heroku
+
+# step one go to package.jos and add dependencies
+
+"@angular/compiler-cli": "^6.0.3",
+    "@angular-devkit/build-angular": "~0.6.8",
+    "typescript": "~2.7.2",
+    "@angular/cli": "~6.0.8",
+    
+# step two add
+"name": "studentsadmin",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "node server.js", == this line should replace
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod" == this line should add 
+
+# step three add file server.js
+
+Run 'npm install -s express'
+
+# step four
+
+push file to heroku
+and open it.
