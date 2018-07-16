@@ -28,8 +28,8 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-  onEdit(stu : Student){
-    this.studentService.selectedStudent = Object.assign({}, stu);
+  onUpdate(stu){
+    this.route.navigate(['/student/edit', stu.$key]);
   }
   onSelect(student){
     this.route.navigate(['/student/detail', student.$key]);

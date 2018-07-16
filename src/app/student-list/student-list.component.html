@@ -27,7 +27,7 @@
           <!-- <td>{{ student.email_address }}</td>  -->
           <td>{{ student.phone_number }}</td> 
           <td><a class="btn" (click)="onSelect(student)"> <i class="fa fa-eye"></i></a></td>
-          <td><a [routerLink]="['/student/edit', student.$key ]" class="btn" (click)="onEdit(student)"> <i class="fa fa-edit"></i></a></td>
+          <td><a class="btn" (click)="onUpdate(student)"> <i class="fa fa-edit"></i></a></td>
           <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td>
         </tr>
     </tbody>

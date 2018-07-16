@@ -1,0 +1,231 @@
+<div class="container">
+  <div style="margin-top: 10px; background-color:white; padding: 20px;">
+    <div class="bg-primary text-center">
+      <h3 style="padding: 5px">Updating Student</h3>
+    </div>
+    <div *ngIf="this.student">
+      <form #studentForm="ngForm" (ngSubmit)="updateStudent(studentForm)" class="form-group">
+          <div class="row">
+            <div class="col-sm-6">
+                <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="student.$key">
+                <div class="form-group">
+                    <label for="id">Student id</label>
+                    <input type="text" class="form-control" name="id" #id="ngModel" [(ngModel)]="student.id" placeholder="STU00_">
+                  </div>
+                  <div class="form-group">
+                    <label for="english_name">English name</label>
+                    <input class="form-control" name="english_name" #english_name="ngModel" [(ngModel)]="student.english_name" placeholder="English name">
+                  </div>
+                  <div class="form-group">
+                      <label for="japanese_name">Japanese name</label>
+                      <input class="form-control" name="japanese_name" #japanese_name="ngModel" [(ngModel)]="student.japanese_name" placeholder="Japanese name">
+                  </div>
+                  <div class="form-group">
+                        <label for="khmer_name">Khmer name</label>
+                        <input class="form-control" name="khmer_name" #khmer_name="ngModel" [(ngModel)]="student.khmer_name" placeholder="Khmer name">
+                  </div>
+                  <div class="form-group">
+                      <label for="nationality">Nationality</label>
+                      <input class="form-control" name="nationality" #nationality="ngModel" [(ngModel)]="student.nationality" placeholder="Nationality">
+                  </div>
+                  <div class="form-group">
+                      <label for="place_of_birth">Place of Birth</label>
+                      <input class="form-control" name="place_of_birth" #place_of_birth="ngModel" [(ngModel)]="student.place_of_birth" placeholder="Village, Commune, Dicstrict, Province">
+                  </div>
+                  <div class="form-group">
+                    <label for="card_id">Card ID</label>
+                    <input class="form-control" name="card_id" #card_id="ngModel" [(ngModel)]="student.card_id" placeholder="0000-0000-0000">
+                </div>  
+                <div class="form-group">
+                  <label for="education">Education</label>
+                  <input class="form-control" name="education" #education="ngModel" [(ngModel)]="student.education" placeholder="level of degree">
+                </div>
+                <div class="form-group">
+                  <label for="date_of_birth">Birthday</label>
+                  <input class="form-control" name="date_of_birth" #date_of_birth="ngModel" [(ngModel)]="student.date_of_birth" placeholder="dd-mm-yyyy">
+                </div>  
+                <div class="form-group">
+                  <label for="age">Age</label>
+                  <input class="form-control" name="age" #age="ngModel" [(ngModel)]="student.age" placeholder="00">
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <input class="form-control" name="gender" #gender="ngModel" [(ngModel)]="student.gender" placeholder="Male or Female">
+                </div>
+                <div class="form-group">
+                  <label for="state">State of healt</label>
+                  <input class="form-control" name="state" #state="ngModel" [(ngModel)]="student.state" placeholder="State of healt">
+                </div>
+                <div class="form-group">
+                  <label for="blood_type">Blood Group</label>
+                  <input class="form-control" name="blood_type" #blood_type="ngModel" [(ngModel)]="student.blood_type" placeholder="AB, A+, O+, B...)">
+                </div>  
+                <div class="form-group">
+                  <label for="vision">Vision</label>
+                  <input class="form-control" name="vision" #vision="ngModel" [(ngModel)]="student.vision" placeholder="left 0.0 right 0.0">
+                </div>
+                <div class="form-group">
+                  <label for="interest">Interest</label>
+                  <input class="form-control" name="interest" #interest="ngModel" [(ngModel)]="student.interest" placeholder="Reading book, sport, etc...">
+                </div>
+                <div class="form-group">
+                  <label for="year_of_experience">Year Experience</label>
+                  <input class="form-control" name="year_of_experience" #year_of_experience="ngModel" [(ngModel)]="student.year_of_experience" placeholder="0">
+                </div>
+                <div class="form-group">
+                  <label for="married">Maritial Status</label>
+                  <input class="form-control" name="married" #married="ngModel" [(ngModel)]="student.married" placeholder="Yes , No">
+                </div>
+                <div class="form-group">
+                  <label for="position">Position</label>
+                  <input class="form-control" name="position" #position="ngModel" [(ngModel)]="student.position" placeholder="Job position">
+                </div>
+                <div class="form-group">
+                    <label for="salary">Khmer salary</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-dollar"></i>
+                      </div>
+                      <input class="form-control" name="khmer_salary" #khmer_salary="ngModel" [(ngModel)]="student.khmer_salary" placeholder="0" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="behavior">Behavior</label>
+                    <input class="form-control" name="behavior" #behavior="ngModel" [(ngModel)]="student.behavior" placeholder="Friendly, Honest, Confident">
+                </div>
+                <div class="form-group">
+                    <label for="behavior">Went to Japan</label>
+                    <input class="form-control" name="went_to_japan" #went_to_japan="ngModel" [(ngModel)]="student.went_to_japan" placeholder="Yes, No">
+                </div>
+                <div class="form-group">
+                    <label for="japanese_conversation">Japanese conversation</label>
+                    <input class="form-control" name="japanese_conversation" #japanese_conversation="ngModel" [(ngModel)]="student.japanese_conversation" placeholder="Better, Good, Poor">
+                </div>
+                <div class="form-group">
+                    <label for="height">Height </label>
+                    <input class="form-control" name="height" #height="ngModel" [(ngModel)]="student.height" placeholder="0cm">
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight </label>
+                    <input class="form-control" name="weight" #weight="ngModel" [(ngModel)]="student.weight" placeholder="0kg">
+                </div>
+                <div class="form-group">
+                    <label for="current_address">Current address </label>
+                    <input class="form-control" name="current_address" #current_address="ngModel" [(ngModel)]="student.current_address" placeholder="address which you are living in.">
+                </div>
+          </div>  
+        <div class="col-sm-6">
+          <div class="form-group">
+              <label for="reason">Reason of going to Japan</label>
+              <input class="form-control" name="reason" #reason="ngModel" [(ngModel)]="student.reason" placeholder="why do you want to go Japan?">
+          </div>
+          <div class="form-group">
+              <label for="arrang_money">Money arrangment </label>
+              <input class="form-control" name="arrang_money" #arrang_money="ngModel" [(ngModel)]="student.arrang_money" placeholder="What will you do with your money after come back from Japan?">
+          </div>
+          <div class="form-group">
+              <label for="sending_company">Sending Company</label>
+              <input class="form-control" name="sending_company" #sending_company="ngModel" [(ngModel)]="student.sending_company" placeholder="Which company that sent you to Japan">
+          </div>
+          <div class="form-group">
+              <label for="japanese_level">Japanese level </label>
+              <input class="form-control" name="japanese_level" #japanese_level="ngModel" [(ngModel)]="student.japanese_level" placeholder="N1, N2, N3, N4, N5, etc...">
+          </div>
+          <div class="form-group">
+              <label for="field_of_work">Field of working in Japan</label>
+              <input class="form-control" name="field_of_work" #field_of_work="ngModel" [(ngModel)]="student.field_of_work" placeholder="IT, Hotel, Nurse, Car Maintainance">
+          </div>
+          <div class="form-group">
+              <label for="date_to_japan">Date going to Japan </label>
+              <input class="form-control" name="date_to_japan" #date_to_japan="ngModel" [(ngModel)]="student.date_to_japan" placeholder="dd-mm-yyyy">
+          </div>
+          <div class="form-group">
+              <label for="prefecture">Prefecture</label>
+              <input class="form-control" name="prefecture" #prefecture="ngModel" [(ngModel)]="student.prefecture" placeholder="Saitama, Okinawa, Tokyo, etc...">
+          </div>
+          <div class="form-group">
+            <label for="zip_code">Zip Code</label>
+            <input class="form-control" name="zip_code" #zip_code="ngModel" [(ngModel)]="student.zip_code" placeholder="0000-0000">
+          </div>
+          <div class="form-group">
+            <label for="address_in_japan">Japan address</label>
+            <input class="form-control" name="address_in_japan" #address_in_japan="ngModel" [(ngModel)]="student.address_in_japan" placeholder="Japan current address">
+          </div>
+          <div class="form-group">
+            <label for="grammer_level">Grammer level</label>
+            <input class="form-control" name="grammer_level" #grammer_level="ngModel" [(ngModel)]="student.grammer_level" placeholder="Grammer level">
+          </div>
+          <div class="form-group">
+            <label for="idiom_level">Idiom level</label>
+            <input class="form-control" name="idiom_level" #idiom_level="ngModel" [(ngModel)]="student.idiom_level" placeholder="Idiom level">
+          </div>
+          <div class="form-group">
+            <label for="conversation_level">Conversation level</label>
+            <input class="form-control" name="conversation_level" #conversation_level="ngModel" [(ngModel)]="student.conversation_level" placeholder="Conversation level">
+          </div>
+          <div class="form-group">
+            <label for="life_attitude">Life attitude</label>
+            <input class="form-control" name="life_attitude" #life_attitude="ngModel" [(ngModel)]="student.life_attitude" placeholder="Attitude paying attendance in school">
+          </div>
+          <div class="form-group">
+            <label for="course_type">Course type</label>
+            <input class="form-control" name="course_type" #course_type="ngModel" [(ngModel)]="student.course_type" placeholder="Kind of Course">
+          </div>
+          <div class="form-group">
+            <label for="last_peroid_of_study">Last peroid of study</label>
+            <input class="form-control" name="last_peroid_of_study" #last_peroid_of_study="ngModel" [(ngModel)]="student.last_peroid_of_study" placeholder="dd-mm-yyyy">
+          </div>
+            <div class="form-group">
+              <label for="university_name">University Name</label>
+              <input class="form-control" name="university_name" #university_name="ngModel" [(ngModel)]="student.university_name" placeholder="Your university name">
+            </div>
+          <div class="form-group">
+            <label for="subject_name">Subject or Major</label>
+            <input class="form-control" name="subject_name" #subject_name="ngModel" [(ngModel)]="student.subject_name" placeholder="Subject which you are studying or graduated">
+          </div> 
+          <div class="form-group">
+            <label for="teacher_name">Techer Name</label>
+            <input class="form-control" name="teacher_name" #teacher_name="ngModel" [(ngModel)]="student.teacher_name" placeholder="Your teacher name">
+          </div>
+          <div class="form-group">
+            <label for="book_type">Book type</label>
+            <input class="form-control" name="book_type" #book_type="ngModel" [(ngModel)]="student.book_type" placeholder="the book that you are studied">
+          </div>
+          <div class="form-group">
+            <label for="start_date">Date of started course</label>
+            <input class="form-control" name="start_date" #start_date="ngModel" [(ngModel)]="student.start_date" placeholder="When did you start this course.">
+          </div>
+          <div class="form-group">
+            <label for="end_date">Date of ended course</label>
+            <input class="form-control" name="end_date" #end="ngModel" [(ngModel)]="student.end_date" placeholder="When did you finished this course.">
+          </div>
+          <div class="form-group">
+            <label for="status">status of course</label>
+            <input class="form-control" name="status" #status="ngModel" [(ngModel)]="student.status" placeholder="great, good, poor">
+          </div>
+          <div class="form-group">
+            <label for="description">description of course</label>
+            <input class="form-control" name="description" #description="ngModel" [(ngModel)]="student.description" placeholder="How do you think about this course">
+          </div>
+          <div class="form-group">
+            <label for="admin_name">Registration admin</label>
+            <input class="form-control" name="admin_name" #admin="ngModel" [(ngModel)]="student.admin_name" placeholder="Name of registrator.">
+          </div>
+          <div class="form-group">
+            <label for="email_address">Email of student</label>
+            <input class="form-control" name="email_address" #email_address="ngModel" [(ngModel)]="student.email_address" placeholder="Email address">
+          </div>
+          <div class="form-group">
+            <label for="phone_number">Phone number of student</label>
+            <input class="form-control" name="phone_number" #phone_number="ngModel" [(ngModel)]="student.phone_number" placeholder="012345678">
+          </div>
+        </div>
+        </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+            <button class="btn btn-primary" type="button" (click)="resetForm(studentForm)"> <i class="fa fa-repeat"> </i> Reset</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>

@@ -1,28 +1,48 @@
+import { ActivatedRoute } from '@angular/router';
+import { Student } from './../services/student.model';
 import { ToastrService } from 'ngx-toastr';
 import { StudentsService } from './../services/students.service';
-import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Student } from '../services/student.model';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-student-registration',
-  templateUrl: './student-registration.component.html',
-  styleUrls: ['./student-registration.component.css'],
+  selector: 'app-updatestudent',
+  templateUrl: './updatestudent.component.html',
+  styleUrls: ['./updatestudent.component.css'],
   providers: [ StudentsService ]
 })
-export class StudentRegistrationComponent implements OnInit {
+export class UpdatestudentComponent implements OnInit {
+  studentList: Student[];
+  student: Student;
 
-  constructor(public studentService: StudentsService, private tostr: ToastrService) { }
+  constructor(private studentService: StudentsService, private route: ActivatedRoute ,private tostr: ToastrService) { }
 
   ngOnInit() {
-    this.resetForm();
-  }
+       
+    let key = this.route.snapshot.paramMap.get("$key");
 
-  onSubmit(studentForm: NgForm) {
-    if (studentForm.value.$key == null)
-      this.studentService.insertStudent(studentForm.value);
-      this.resetForm(studentForm);
-      this.tostr.success('Submitted Succcessfully', 'Employee Register');
+    var datas = this.studentService.getData();
+    datas.snapshotChanges().subscribe(item => {
+      this.studentList = [];
+      item.forEach(element => {
+        var data = element.payload.toJSON();
+        data["$key"] = element.key;
+        this.studentList.push(data as Student);      
+      });    
+      for(let i = 0; i < this.studentList.length ; i++){
+        if(key == this.studentList[i].$key){
+          this.student = this.studentList[i];
+          break;
+        }
+      }
+      console.log(this.student.english_name);
+    });
+    console.log(key);
+  }
+  updateStudent(studentForm: NgForm) {
+    this.studentService.updateStudent(studentForm.value);
+    this.resetForm(studentForm);
+    this.tostr.success('Updated Succcessfully', 'Employee Register');
   }
   resetForm(studentForm?: NgForm) {
     if (studentForm != null)
@@ -83,4 +103,5 @@ export class StudentRegistrationComponent implements OnInit {
       phone_number: null
     }
   }
+
 }
