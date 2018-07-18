@@ -1,3 +1,37 @@
-<p>
-  attendence works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-aside></app-aside>
+      </div>
+      <div class="col-sm-9">
+          <div style="margin-top: 10px; background-color:white; padding: 20px;">
+              <div class="bg-primary text-center">
+                <h3 style="padding: 5px">Attendence Entry</h3>
+              </div>
+                <form #attendenceForm="ngForm" (ngSubmit)="onSubmit(attendenceForm)" class="form-group">
+                      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="attendenceService.selectedAttendence.$key">
+                        <div class="form-group">
+                              <label for="student_name">Student Name</label>
+                              <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="attendenceService.selectedAttendence.student_name" placeholder="English Full Name Of Student">
+                          </div>
+                            <div class="form-group">
+                              <label for="study_date">Study Date</label>
+                              <input class="form-control" name="study_date" #study_date="ngModel" [(ngModel)]="attendenceService.selectedAttendence.study_date" placeholder="Study Date">
+                            </div>
+                        <div class="form-group">
+                          <label for="status">Status</label>
+                          <input class="form-control" name="status" #status="ngModel" [(ngModel)]="attendenceService.selectedAttendence.status" placeholder="Status">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input class="form-control" name="description" #description="ngModel" [(ngModel)]="attendenceService.selectedAttendence.description" placeholder="Description">
+                        </div>
+                    <div class="form-group">
+                      <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Submit</button> || 
+                      <button class="btn btn-primary" type="button" (click)="resetForm(attendenceForm)"> <i class="fa fa-repeat"> </i> Reset</button>
+                    </div>
+                  </form>
+            </div>
+      </div>
+    </div>
+</div>

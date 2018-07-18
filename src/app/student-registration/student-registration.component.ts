@@ -2,7 +2,6 @@ import { ToastrService } from 'ngx-toastr';
 import { StudentsService } from './../services/students.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Student } from '../services/student.model';
 
 @Component({
   selector: 'app-student-registration',

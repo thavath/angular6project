@@ -1,6 +1,7 @@
 #asidelayout {
     margin-right: -10px; 
-    margin-top: -10px; 
+    margin-top: 10px; 
+    padding-top: 50px;
     height: 2000px; 
     background-color: white;
 }

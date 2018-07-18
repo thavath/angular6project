@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-aside></app-aside>
+      </div>
+      <div class="col-sm-9">
+          <div style="margin-top: 10px; background-color:white; padding: 20px; height: 1000px;">
+              <div class=" text-center">
+                <h3 style="padding: 5px">Attendence List</h3>
+              </div>
+              
+              <div *ngIf="attendenceList">
+                  <div>
+                      <table class="table table-sm table-hover">
+                          <thead class="bg-primary">
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Study Date</th>
+                            <!-- <th>Email</th> -->
+                            <th>Status</th>
+                            <th>Description</th>    
+                            <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let attendence of attendenceList">
+                            <td>{{ attendence.student_name }}</td>
+                            <!-- <td>{{ student.age }}</td> -->
+                            <!-- <td>{{ student.gender }}</td> -->
+                            <td>{{ attendence.study_date }}</td>
+                            <td>{{ attendence.status }}</td>
+                            <!-- <td>{{ student.email_address }}</td>  -->
+                            <td>{{ attendence.description }}</td> <td>
+                                <a class="btn" (click)="onEdit(attendence)">
+                                  <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <a class="btn" (click)="onDelete(attendence.$key)">
+                                  <i class="fa fa-trash-o"></i>
+                                </a>
+                              </td>
+                            <div *ngIf="editState && itemToEdit.$key == attendence.$key" class="modaledit">
+                              <div style="margin: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 30px; border: 5px solid royalblue;">
+                                <h3>Editing Attendence of {{ attendence.student_name }}</h3>
+                                <form #attendenceForm="ngForm" (ngSubmit)="onUpdate(attendence)" class="form-group">
+                                  <!-- <fieldset> -->
+                                  <!-- <legend>Editing Student</legend> -->
+                                  
+                                  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="attendence.$key">
+                                      <div class="form-group">
+                                            <label for="student_name">Student Name</label>
+                                            <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="attendence.student_name" placeholder="English Full Name Of Student">
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="study_date">Study Date</label>
+                                            <input class="form-control" name="study_date" #study_date="ngModel" [(ngModel)]="attendence.study_date" placeholder="Study Date">
+                                          </div>
+                                      <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <input class="form-control" name="status" #status="ngModel" [(ngModel)]="attendence.status" placeholder="Status">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="description">Description</label>
+                                          <input class="form-control" name="description" #description="ngModel" [(ngModel)]="attendence.description" placeholder="Description">
+                                      </div>
+                                  <div class="form-group">
+                                    <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                                    <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                                  </div>
+                                <!-- </fieldset> -->
+                                </form>
+                              </div>
+                              </div>
+                            </tr>
+                      </tbody>
+                      </table>
+                  </div>
+                  
+              </div>
+            </div>
+      </div>
+    </div>
+</div>
