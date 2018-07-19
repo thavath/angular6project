@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-sm-9">
+        <div style="margin-top: 10px; background-color:white; padding: 20px;">
+            <div class="bg-primary text-center">
+              <h3 style="padding: 5px">Interview Entry</h3>
+            </div>
+            <div>
+              <form #interviewForm="ngForm" (ngSubmit)="onSubmit(interviewForm)" class="form-group">
+                <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="interviewService.selectedInterview.$key">
+                  <div class="form-group">
+                        <label for="student_name">Student Name</label>
+                        <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="interviewService.selectedInterview.student_name" placeholder="English Full Name Of Student">
+                    </div>
+                      <div class="form-group">
+                        <label for="interview_date">Interview Date</label>
+                        <input class="form-control" name="interview_date" #interview_date="ngModel" [(ngModel)]="interviewService.selectedInterview.interview_date" placeholder="Interview Date">
+                      </div>
+                  <div class="form-group">
+                    <label for="interview_type">Interview Type</label>
+                    <input class="form-control" name="interview_type" #interview_type="ngModel" [(ngModel)]="interviewService.selectedInterview.interview_type" placeholder="Interview Type">
+                  </div>
+                  <div class="form-group">
+                      <label for="company_name">Company Name</label>
+                      <input class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="interviewService.selectedInterview.company_name" placeholder="Company Name">
+                  </div>
+                  
+                  <div class="form-group">
+                      <label for="status">Status</label>
+                      <input class="form-control" name="status" #status="ngModel" [(ngModel)]="interviewService.selectedInterview.status" placeholder="Company Name">
+                  </div>
+                  <div class="form-group">
+                      <label for="job_history">Job History</label>
+                      <input class="form-control" name="job_history" #job_history="ngModel" [(ngModel)]="interviewService.selectedInterview.job_history" placeholder="Job History">
+                  </div>
+                  <div class="form-group">
+                      <label for="certificate">Certificate</label>
+                      <input class="form-control" name="certificate" #certificate="ngModel" [(ngModel)]="interviewService.selectedInterview.certificate" placeholder="Certificate">
+                  </div>
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Submit Interview</button> || 
+                <button class="btn btn-primary" type="button" (click)="resetForm(interviewForm)"> <i class="fa fa-repeat"> </i> Reset</button>
+              </div>
+            </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

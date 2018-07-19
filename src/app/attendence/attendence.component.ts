@@ -23,6 +23,7 @@ export class AttendenceComponent implements OnInit {
       this.attendenceService.insertAttendence(attendenceForm.value);
       // this.tostr.success('Submitted Succcessfully', 'Employee Register');
       this.tostr.success('Submitted Succcessfully', 'Employee Register');
+      this.resetForm(attendenceForm);
   }
 
   resetForm(attendenceForm?: NgForm) {

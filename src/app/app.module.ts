@@ -29,6 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdatestudentComponent } from './updatestudent/updatestudent.component';
 import { AttendencesListComponent } from './attendences-list/attendences-list.component';
+import { InterviewComponent } from './interview/interview.component';
+import { InterviewListComponent } from './interview-list/interview-list.component';
 
 const forRoutes: Routes = [
   { path : 'fujiyama', component: FujiyamaComponent },
@@ -36,6 +38,9 @@ const forRoutes: Routes = [
   { path : 'signin', component: LoginComponent },
   { path : 'signup', component: SingupComponent },
   { path : 'student', component: StudentListComponent },
+  { path : 'student-list', component: StudentListComponent },
+  { path : 'interview', component: InterviewComponent },
+  { path : 'interview-list', component: InterviewListComponent },
   { path : 'attendance', component: AttendenceComponent },
   { path : 'attendances-list', component: AttendencesListComponent },
   { path : 'student/detail/:$key', component: DetailComponent },
@@ -62,7 +67,9 @@ const forRoutes: Routes = [
     LoginComponent,
     SingupComponent,
     UpdatestudentComponent,
-    AttendencesListComponent
+    AttendencesListComponent,
+    InterviewComponent,
+    InterviewListComponent
   ],
   imports: [
     ToastrModule.forRoot(),

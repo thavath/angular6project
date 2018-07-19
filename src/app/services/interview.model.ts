@@ -1,7 +1,8 @@
 import { Student } from "./student.model";
 
 export class Interview {
-    student :Student;
+    $key :string;
+    student_name :string;
     interview_date: Date;
     interview_type: string;
     company_name: string;
