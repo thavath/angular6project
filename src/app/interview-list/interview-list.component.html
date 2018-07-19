@@ -8,9 +8,23 @@
               <div class=" text-center">
                 <h3 style="padding: 5px">Interview List</h3>
               </div>
-              
+              <div class="header-search">
+                <form (ngSubmit)="onSearch()"> 
+                  <input type="search" name="search" id="search" [(ngModel)]="search" placeholder="Name of student" class="input-search-box">
+                  <button class="btn btn-success" type="submit"> <i class="fa fa-search"> </i> Search</button>            
+                  <br> <br>        
+                </form>  
+              </div>
+              <div *ngIf="this.searchInterview && this.display">
+                  <ul *ngFor="let s of searchInterview">
+                    <li>{{ s.student_name }}</li>
+                    <li>{{ s.status }}</li>
+                    <li>{{ s.interview_date }}</li>
+                  </ul>
+                </div>
               <div *ngIf="interviewList">
-                  <div>
+                  
+                  <div *ngIf="this.displaySearch">
                       <table class="table table-sm table-hover">
                           <thead class="bg-primary">
                           <tr>
