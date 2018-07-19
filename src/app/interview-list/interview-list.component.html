@@ -43,7 +43,7 @@
                                 </a>
                               </td>
                             <div *ngIf="editState && itemToEdit.$key == interview.$key" class="modaledit">
-                              <div style="margin: 10px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 20px; border: 5px solid royalblue;">
+                              <div style="margin: 10px; margin-right: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 20px; border: 5px solid royalblue;">
                                 <h3>Editing Interview of {{ interview.student_name }}</h3>
                                 <form #interviewForm="ngForm" (ngSubmit)="onUpdate(interview)" class="form-group">
                                   <!-- <fieldset> -->
