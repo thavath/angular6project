@@ -41,7 +41,7 @@
                       <input class="form-control" name="certificate" #certificate="ngModel" [(ngModel)]="interviewService.selectedInterview.certificate" placeholder="Certificate">
                   </div>
               <div class="form-group">
-                <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Submit Interview</button> || 
+                <button class="btn btn-primary" type="submit"><a routerLink="\interview-list"> <i class="fa fa-floppy-o"> </i> Submit Interview</a></button> || 
                 <button class="btn btn-primary" type="button" (click)="resetForm(interviewForm)"> <i class="fa fa-repeat"> </i> Reset</button>
               </div>
             </form>

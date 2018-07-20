@@ -4,7 +4,6 @@ import { Attendence } from './attendence.model';
 
 @Injectable()
 export class AttendenceService {
-  
   attendenceList: AngularFireList<any>;
   selectedAttendence: Attendence = new Attendence();
   constructor(private firebase: AngularFireDatabase) { }

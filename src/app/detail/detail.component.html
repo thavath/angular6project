@@ -2,32 +2,84 @@
     <div class="container" style=" margin-top: 10px;">
         <div style="margin: 0px; padding: 20px ;background-color: white;  height: 1000px;">
             <div *ngIf="this.student" >
-                <div class="bg-primary"><h3 class="text-center" style="padding: 10px">Student Name: {{ this.student.english_name }}</h3></div>
-                <div style="padding: 15px; align-content: center;">
-                    <div class="row" style="background-color: honeydew;">
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Name :  {{ this.student.english_name }}</p></div>
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student age :  {{ this.student.khmer_name }}</p></div>
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                    </div>
-                    <div class="row" style="background-color: honeydew;">
-                            <div class="col-md-3 textCenter"><p class="pdetail">Student Name :  {{ this.student.english_name }}</p></div>
-                            <div class="col-md-3 textCenter"><p class="pdetail">Student age :  {{ this.student.khmer_name }}</p></div>
-                            <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                            <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
+                <div class="bg-primary"><h3 class="text-center" style="padding: 10px">Student Name: {{this.student.id}}./ {{ this.student.english_name }}</h3></div>
+                <!-- //=========================================================== -->
+                <div style="margin: auto; margin: 20px;">
+                        <div class="row">
+                                   <div class="col-md-4">
+                                    <div style="margin: 10px;">
+                                        <div style="border: 1px solid rgb(0, 81, 255); padding: 10px; padding-top: -10px;">
+                                            <h3 class="bg-primary" style="padding: 5px">Persional Information</h3>
+                                            <p><b>English Name</b> : {{ this.student.english_name }}</p>
+                                            <p><b>Japanese Name</b> : {{ this.student.japanese_name }}</p>
+                                            <p><b>Khmer Name</b> : {{ this.student.khmer_name }}</p>
+                                            <p><b>Nationality</b> : {{ this.student.nationality }}</p>
+                                            <p><b>Place of Birth</b> : {{ this.student.place_of_birth }}</p>
+                                            <p><b>Card Id</b> : {{ this.student.card_id }}</p>
+                                            <p><b>Khmer Salary</b> : {{ this.student.khmer_salary }}</p>
+                                            <p><b>Education</b> : {{ this.student.education }}</p>
+                                            <p><b>Date of Birth</b> : {{ this.student.date_of_birth }}</p>
+                                            <p><b>Age</b> : {{ this.student.age }}</p>
+                                            <p><b>Gender</b> : {{ this.student.gender }}</p>
+                                            <p><b>State</b> : {{ this.student.state }}</p>
+                                            <p><b>Blood Type</b> : {{ this.student.blood_type }}</p>
+                                            <p><b>Vision</b> : {{ this.student.vision }}</p>
+                                            <p><b>Interest</b> : {{ this.student.interest }}</p>
+                                            <p><b>Year of Experience</b> : {{ this.student.year_of_experience }}</p>
+                                            <p><b>Married</b> : {{ this.student.married }}</p>
+                                            <p><b>Position</b> : {{ this.student.position }}</p>
+                                            <p><b>Behavior</b> : {{ this.student.behavior }}</p>
+                                            <p><b>Went to Japan</b> : {{ this.student.went_to_japan }}</p>
+                                            <p><b>Japanese Conversation</b> : {{ this.student.japanese_conversation }}</p>
+                                            <p><b>Height</b> : {{ this.student.height }}</p>
+                                            <p><b>Weight</b> : {{ this.student.weight }}</p>
+                                            <p><b>Current Address</b> : {{ this.student.current_address }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                        <div style="margin: 10px; padding-left: 30px;">
+                                            <div style="border: 1px solid rgb(0, 81, 255); padding: 10px; padding-top: -10px;">
+                                                <h3 class="bg-primary" style="padding: 5px">Going To Japan</h3>  
+                                                <p><b>Going to Japan Reason</b> : {{ this.student.reason }}</p>
+                                                <p><b>Money Arrangment</b> : {{ this.student.arrang_money }}</p>
+                                                <p><b>Sending Company</b> : {{ this.student.sending_company }}</p>
+                                                <p><b>Field of Working</b> : {{ this.student.field_of_work }}</p>
+                                                <p><b>Date Going Japan</b> : {{ this.student.date_to_japan }}</p>
+                                                <p><b>Japan Prefecture</b> : {{ this.student.prefecture }}</p>
+                                                <p><b>Zip Code</b> : {{ this.student.zip_code }}</p>
+                                                <p><b>Address in Japan</b> : {{ this.student.address_in_japan }}</p>
+                                                
+                                                <h3 class="bg-primary" style="padding: 5px">Reference Information</h3>
+                                                <p><b>Email Address</b> : {{ this.student.email_address }}</p>
+                                                <p><b>Contact Number</b> : {{ this.student.phone_number }}</p>
+                                                <p><b>Admin Register Name</b> : {{ this.student.admin_name }}</p>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div style="margin: 10px; padding-left: 30px;">
+                                        <div style="border: 1px solid rgb(0, 81, 255); padding: 10px; padding-top: -10px;">
+                                                <h3 class="bg-primary" style="padding: 5px">Course Information</h3>  
+                                                <p><b>Grammer Level</b> : {{ this.student.grammer_level }}</p>
+                                                <p><b>Idiom Level</b> : {{ this.student.idiom_level }}</p>
+                                                <p><b>Conversation Level</b> : {{ this.student.conversation_level }}</p>
+                                                <p><b>Course Type</b> : {{ this.student.course_type }}</p>
+                                                <p><b>Last Period of Study</b> : {{ this.student.last_peroid_of_study }}</p>
+                                                <p><b>University Name</b> : {{ this.student.university_name }}</p>
+                                                <p><b>Subject of Study</b> : {{ this.student.subject_name }}</p>
+                                                <p><b>Teacher Name</b> : {{ this.student.teacher_name }}</p>
+                                                <p><b>Book Type</b> : {{ this.student.book_type }}</p>
+                                                <p><b>Start Date</b> : {{ this.student.start_date }}</p>
+                                                <p><b>End Date</b> : {{ this.student.end_date }}</p>
+                                                <p><b>Status</b> : {{ this.student.status }}</p>
+                                                <p><b>Description</b> : {{ this.student.description }}</p>  
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                    <div class="row" style="background-color: honeydew;">
-                                <div class="col-md-3 textCenter"><p class="pdetail">Student Name :  {{ this.student.english_name }}</p></div>
-                                <div class="col-md-3 textCenter"><p class="pdetail">Student age :  {{ this.student.khmer_name }}</p></div>
-                                <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                                <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                    </div>
-                    <div class="row" style="background-color: honeydew;">
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Name :  {{ this.student.english_name }}</p></div>                            <div class="col-md-3 textCenter"><p class="pdetail">Student age :  {{ this.student.khmer_name }}</p></div>
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                        <div class="col-md-3 textCenter"><p class="pdetail">Student Birthday :  {{ this.student.date_of_birth }}</p></div>
-                    </div>
                 </div>
+                <!-- //=================================================== -->
             </div>
         </div>
     </div>

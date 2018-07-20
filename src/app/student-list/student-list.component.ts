@@ -12,6 +12,12 @@ import { Router } from '@angular/router';
 })
 export class StudentListComponent implements OnInit {
   studentList: Student[];
+
+  searchStudent: Student[];
+  displaySearch: Boolean = true;
+  search: string = "";
+  display: Boolean = false;
+
  
   constructor(private studentService: StudentsService, private tostr: ToastrService ,private route: Router) { }
 
@@ -27,7 +33,29 @@ export class StudentListComponent implements OnInit {
       });
     });
   }
-
+  onSearch(){
+    this.displaySearch = false;
+    this.searchStudent = [];
+    this.studentList.forEach(element => {
+      if (this.search == element.english_name || this.search == element.japanese_level || this.search == element.sending_company){
+        this.searchStudent.push(element); 
+      }
+    });
+    if(this.searchStudent.length <= 0 && this.search == ""){
+      // this.displaySearch = false;
+      this.displaySearch = true;
+      console.log("Search not found..");
+    }
+    if(this.searchStudent.length > 0 ){  
+      this.searchStudent.forEach(item => {
+        console.log(item.english_name);
+        console.log(item.japanese_level);
+        console.log(item.sending_company);
+        console.log(item.phone_number);
+        this.display = true;
+      });
+    }
+  }
   onUpdate(stu){
     this.route.navigate(['/student/edit', stu.$key]);
   }

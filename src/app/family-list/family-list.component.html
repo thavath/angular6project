@@ -1,0 +1,183 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-aside></app-aside>
+      </div>
+      <div class="col-sm-9">
+          <div style="margin-top: 10px; background-color:white; padding: 20px; height: 1000px;">
+              <div class=" text-center">
+                <h3 style="padding: 5px">Family List</h3>
+              </div>
+              
+              <div class="header-search">
+                <form (ngSubmit)="onSearch()"> 
+                  <input type="search" name="search" id="search" [(ngModel)]="search" placeholder="Name or Date" class="input-search-box">
+                  <button class="btn btn-success" type="submit"> <i class="fa fa-search"> </i> Search</button>            
+                  <br> <br>        
+                </form>  
+              </div>
+              <!-- =================================================================== -->
+              <div *ngIf="this.searchFamily && this.display">
+                <table class="table table-sm table-hover">
+                  <thead class="bg-primary">
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Family Name</th>
+                            <!-- <th>Email</th> -->
+                            <th>Age</th>
+                            <th>Job</th>
+                            <th>Position</th>
+                            <th>Status</th>    
+                            <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let family of familyList">
+                            <td>{{ family.student_name }}</td>
+                            <!-- <td>{{ student.age }}</td> -->
+                            <!-- <td>{{ student.gender }}</td> -->
+                            <td>{{ family.name }}</td>
+                            <td>{{ family.age }}</td>
+                            <!-- <td>{{ student.email_address }}</td>  -->
+                            <td>{{ family.job }}</td>
+                            <td>{{ family.position }}</td>
+                            <td>{{ family.status }}</td> 
+                            <td>
+                                <a class="btn" (click)="onEdit(family)">
+                                  <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <a class="btn" (click)="onDelete(family.$key)">
+                                  <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                            <div *ngIf="editState && itemToEdit.$key == family.$key" class="modaledit">
+                              <div style="margin: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 30px; border: 5px solid royalblue;">
+                                <h3>Editing Family of {{ family.student_name }}</h3>
+                                <form #familyForm="ngForm" (ngSubmit)="onUpdate(family)" class="form-group">
+                                  <!-- <fieldset> -->
+                                  <!-- <legend>Editing Student</legend> -->
+                                  
+                                  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="family.$key">
+                                      <div class="form-group">
+                                            <label for="student_name">Student Name</label>
+                                            <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="family.student_name" placeholder="English Full Name Of Student">
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="name">Family Name</label>
+                                            <input class="form-control" name="name" #name="ngModel" [(ngModel)]="family.name" placeholder="Name of Family">
+                                          </div>
+                                      <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input class="form-control" name="age" #age="ngModel" [(ngModel)]="family.age" placeholder="How many year old?">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="job">Job</label>
+                                          <input class="form-control" name="job" #job="ngModel" [(ngModel)]="family.job" placeholder="Kind of Job">
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                          <label for="position">Position of Working</label>
+                                          <input class="form-control" name="position" #position="ngModel" [(ngModel)]="family.position" placeholder="Job Position or Resposibilities">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="status">Status</label>
+                                          <input class="form-control" name="status" #status="ngModel" [(ngModel)]="family.status" placeholder="Live or Dead">
+                                      </div>                     
+                                  <div class="form-group">
+                                    <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                                    <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                                  </div>
+                                <!-- </fieldset> -->
+                                </form>
+                              </div>
+                              </div>
+                            </tr>
+                      </tbody>
+              </table>
+              </div>
+              <!-- //======================================================= -->
+              <div *ngIf="this.familyList">
+                  <div *ngIf="this.displaySearch">
+                      <table class="table table-sm table-hover">
+                          <thead class="bg-primary">
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Family Name</th>
+                            <!-- <th>Email</th> -->
+                            <th>Age</th>
+                            <th>Job</th>
+                            <th>Position</th>
+                            <th>Status</th>    
+                            <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let family of familyList">
+                            <td>{{ family.student_name }}</td>
+                            <!-- <td>{{ student.age }}</td> -->
+                            <!-- <td>{{ student.gender }}</td> -->
+                            <td>{{ family.name }}</td>
+                            <td>{{ family.age }}</td>
+                            <!-- <td>{{ student.email_address }}</td>  -->
+                            <td>{{ family.job }}</td>
+                            <td>{{ family.position }}</td>
+                            <td>{{ family.status }}</td> 
+                            <td>
+                                <a class="btn" (click)="onEdit(family)">
+                                  <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <a class="btn" (click)="onDelete(family.$key)">
+                                  <i class="fa fa-trash-o"></i>
+                                </a>
+                              </td>
+                            <div *ngIf="editState && itemToEdit.$key == family.$key" class="modaledit">
+                              <div style="margin: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 30px; border: 5px solid royalblue;">
+                                <h3>Editing Family of {{ family.student_name }}</h3>
+                                <form #familyForm="ngForm" (ngSubmit)="onUpdate(family)" class="form-group">
+                                  <!-- <fieldset> -->
+                                  <!-- <legend>Editing Student</legend> -->
+                                  
+                                  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="family.$key">
+                                      <div class="form-group">
+                                            <label for="student_name">Student Name</label>
+                                            <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="family.student_name" placeholder="English Full Name Of Student">
+                                        </div>
+                                          <div class="form-group">
+                                            <label for="name">Family Name</label>
+                                            <input class="form-control" name="name" #name="ngModel" [(ngModel)]="family.name" placeholder="Name of Family">
+                                          </div>
+                                      <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input class="form-control" name="age" #age="ngModel" [(ngModel)]="family.age" placeholder="How many year old?">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="job">Job</label>
+                                          <input class="form-control" name="job" #job="ngModel" [(ngModel)]="family.job" placeholder="Kind of Job">
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                          <label for="position">Position of Working</label>
+                                          <input class="form-control" name="position" #position="ngModel" [(ngModel)]="family.position" placeholder="Job Position or Resposibilities">
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="status">Status</label>
+                                          <input class="form-control" name="status" #status="ngModel" [(ngModel)]="family.status" placeholder="Live or Dead">
+                                      </div>                     
+                                  <div class="form-group">
+                                    <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                                    <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                                  </div>
+                                <!-- </fieldset> -->
+                                </form>
+                              </div>
+                              </div>
+                            </tr>
+                      </tbody>
+                      </table>
+                  </div>
+                  
+              </div>
+            </div>
+      </div>
+    </div>
+</div>

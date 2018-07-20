@@ -6,38 +6,83 @@
         <div class="col-sm-9">
         <div style="margin-top: 10px; background-color:white; padding: 20px; height: 1000px;">
       
-        <h3>Student list</h3>
-            <br>
-      <table class="table table-hover table-responsive">
-        <thead class="bg-primary">
-        <tr>
-          <th>Name</th>
-          <!-- <th>Age</th> -->
-          <!-- <th>Gender</th> -->
-          <th>Position</th>
-          <th>Company</th>
-          <!-- <th>Email</th> -->
-          <th>Contact</th>
-          <th>Detail</th>    
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of studentList">
-          <td>{{ student.english_name }}</td>
-          <!-- <td>{{ student.age }}</td> -->
-          <!-- <td>{{ student.gender }}</td> -->
-          <td>{{ student.position }}</td>
-          <td>{{ student.sending_company }}</td>
-          <!-- <td>{{ student.email_address }}</td>  -->
-          <td>{{ student.phone_number }}</td> 
-          <td><a class="btn" (click)="onSelect(student)"> <i class="fa fa-eye"></i></a></td>
-          <td><a class="btn" (click)="onUpdate(student)"> <i class="fa fa-edit"></i></a></td>
-          <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td>
-        </tr>
-    </tbody>
-      </table>
+          <h3><u>Student list</u></h3>
+          <br>
+          <div class="header-search">
+            <form (ngSubmit)="onSearch()"> 
+              <input type="search" name="search" id="search" [(ngModel)]="search" placeholder="English Name, Sending Company, Japanese Level" class="input-search-box">
+              <button class="btn btn-success" type="submit"> <i class="fa fa-search"> </i> Search</button>            
+              <br> <br>        
+            </form>  
+          </div>
+          <div *ngIf="this.searchStudent && this.display">
+            <table class="table table-hover table-responsive">
+                  <thead class="bg-primary" *ngIf="this.search != ''">
+                  <tr>
+                    <th>Name</th>
+                    <!-- <th>Age</th> -->
+                    <!-- <th>Gender</th> -->
+                    <th>Position</th>
+                    <th>Company</th>
+                    <!-- <th>Email</th> -->
+                    <th>Japanese Level</th>
+                    <th>Contact</th>
+                    <th>Detail</th>    
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let student of this.searchStudent">
+                    <td>{{ student.english_name }}</td>
+                    <!-- <td>{{ student.age }}</td> -->
+                    <!-- <td>{{ student.gender }}</td> -->
+                    <td>{{ student.position }}</td>
+                    <td>{{ student.sending_company }}</td>
+                    <td>{{ student.japanese_level }}</td> 
+                    <td>{{ student.phone_number }}</td> 
+                    <td><a class="btn" (click)="onSelect(student)"> <i class="fa fa-eye"></i></a></td>
+                    <td><a class="btn" (click)="onUpdate(student)"> <i class="fa fa-edit"></i></a></td>
+                    <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf=this.studentList>
+            <div *ngIf="this.displaySearch">
+              <table class="table table-hover table-responsive">
+                <thead class="bg-primary">
+                <tr>
+                  <th>Name</th>
+                  <!-- <th>Age</th> -->
+                  <!-- <th>Gender</th> -->
+                  <th>Position</th>
+                  <th>Company</th>
+                  <th>Japanese Level</th>
+                  <th>Contact</th>
+                  <th>Detail</th>    
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList">
+                  <td>{{ student.english_name }}</td>
+                  <!-- <td>{{ student.age }}</td> -->
+                  <!-- <td>{{ student.gender }}</td> -->
+                  <td>{{ student.position }}</td>
+                  <td>{{ student.sending_company }}</td>
+                  <td>{{ student.japanese_level }}</td> 
+                  <!-- <td>{{ student.email_address }}</td>  -->
+                  <td>{{ student.phone_number }}</td> 
+                  <td><a class="btn" (click)="onSelect(student)"> <i class="fa fa-eye"></i></a></td>
+                  <td><a class="btn" (click)="onUpdate(student)"> <i class="fa fa-edit"></i></a></td>
+                  <td><a class="btn" (click)="onDelete(student.$key)"><i class="fa fa-trash-o"></i></a></td>
+                </tr>
+            </tbody>
+              </table>
+            </div>
+          </div>
       </div>
     </div>
     </div>

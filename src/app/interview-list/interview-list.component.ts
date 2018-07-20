@@ -14,6 +14,7 @@ export class InterviewListComponent implements OnInit {
   interviewList: Interview[];
   editState: boolean = false;
   itemToEdit: Interview;
+  
   searchInterview: Interview[];
   private displaySearch: Boolean = true;
   private search: string = "";

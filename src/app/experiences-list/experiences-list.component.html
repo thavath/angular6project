@@ -1,0 +1,166 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-aside></app-aside>
+      </div>
+      <div class="col-sm-9">
+          <div style="margin-top: 10px; background-color:white; padding: 20px; height: 1000px;">
+              <div class=" text-center">
+                <h3 style="padding: 5px">Experience List</h3>
+              </div>
+              
+              <div class="header-search">
+                <form (ngSubmit)="onSearch()"> 
+                  <input type="search" name="search" id="search" [(ngModel)]="search" placeholder="Name or Date" class="input-search-box">
+                  <button class="btn btn-success" type="submit"> <i class="fa fa-search"> </i> Search</button>            
+                  <br> <br>        
+                </form>  
+              </div>
+              <!-- =================================================================== -->
+              <div *ngIf="this.searchExperience && this.display">
+                <table class="table table-sm table-hover" *ngIf="this.search != ''">
+                  <thead class="bg-primary" *ngIf="this.search != ''">
+                  <tr>
+                    <th>Student Name</th>
+                    <th>Start Date</th>
+                            <!-- <th>Email</th> -->        
+                    <th>Leaving Date</th>
+                    <th>Company Name</th>
+                    <th>Position of Working</th>    
+                    <th>Action Button </th>
+                    </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let experience of searchExperience">
+                    <td>{{ experience.student_name }}</td>
+                    <!-- <td>{{ student.age }}</td> -->
+                    <!-- <td>{{ student.gender }}</td> -->
+                    <td>{{ experience.start_date }}</td>
+                    <td>{{ experience.leave_date }}</td>
+                    <td>{{ experience.company_name }}</td> 
+                    <td>{{ experience.position }}</td>                            
+                    <td>
+                        <a class="btn" (click)="onEdit(experience)">
+                          <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <a class="btn" (click)="onDelete(experience.$key)">
+                          <i class="fa fa-trash-o"></i>
+                        </a>
+                      </td>
+                      <div *ngIf="editState && itemToEdit.$key == experience.$key" class="modaledit">
+                        <div style="margin: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 30px; border: 5px solid royalblue;">
+                          <h3>Editing Experience of {{ experience.student_name }}</h3>
+                          <form #experienceForm="ngForm" (ngSubmit)="onUpdate(experience)" class="form-group">
+                            <!-- <fieldset> -->
+                            <!-- <legend>Editing Student</legend> -->
+                            
+                            <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="experience.$key">
+                                <div class="form-group">
+                                      <label for="student_name">Student Name</label>
+                                      <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="experience.student_name" placeholder="English Full Name Of Student">
+                                  </div>
+                                    <div class="form-group">
+                                      <label for="start_date">Start Working Date</label>
+                                      <input class="form-control" name="start_date" #start_date="ngModel" [(ngModel)]="experience.start_date" placeholder="Start Working Date">
+                                    </div>
+                                <div class="form-group">
+                                  <label for="leave_date">Leave Working Date</label>
+                                  <input class="form-control" name="leave_date" #leave_date="ngModel" [(ngModel)]="experience.leave_date" placeholder="Leave Working Date">
+                                </div>
+                                <div class="form-group">
+                                    <label for="company_name">Company Name</label>
+                                    <input class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="experience.company_name" placeholder="Name of Company or Institude">
+                                </div>  
+                                <div class="form-group">
+                                    <label for="position">Position of Working</label>
+                                    <input class="form-control" name="position" #position="ngModel" [(ngModel)]="experience.position" placeholder="Leave Working Date">
+                                </div>  
+                            <div class="form-group">
+                              <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                              <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                            </div>
+                          <!-- </fieldset> -->
+                          </form>
+                        </div>
+                        </div>
+                    </tr>
+              </tbody>
+              </table>
+              </div>
+              <!-- //======================================================= -->
+              <div *ngIf="experienceList">
+                  <div *ngIf="this.displaySearch">
+                      <table class="table table-sm table-hover">
+                          <thead class="bg-primary">
+                          <tr>
+                            <th>Student Name</th>
+                            <th>Start Date</th>
+                            <!-- <th>Email</th> -->
+                            <th>Leave Date</th>
+                            <th>Company Name</th>
+                            <th>Position</th>    
+                            <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let experience of experienceList">
+                              <td>{{ experience.student_name }}</td>
+                              <!-- <td>{{ student.age }}</td> -->
+                              <!-- <td>{{ student.gender }}</td> -->
+                              <td>{{ experience.start_date }}</td>
+                              <td>{{ experience.leave_date }}</td>
+                              <td>{{ experience.company_name }}</td> 
+                              <td>{{ experience.position }}</td>                            
+                              <td>
+                                <a class="btn" (click)="onEdit(experience)">
+                                  <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <a class="btn" (click)="onDelete(experience.$key)">
+                                  <i class="fa fa-trash-o"></i>
+                                </a>
+                              </td>
+                            <div *ngIf="editState && itemToEdit.$key == experience.$key" class="modaledit">
+                              <div style="margin: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 30px; border: 5px solid royalblue;">
+                                <h3>Editing Attendence of {{ attendence.student_name }}</h3>
+                                <form #experienceForm="ngForm" (ngSubmit)="onUpdate(experience)" class="form-group">
+                                    <!-- <fieldset> -->
+                                    <!-- <legend>Editing Student</legend> -->
+                                    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="experience.$key">
+                                        <div class="form-group">
+                                              <label for="student_name">Student Name</label>
+                                              <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="experience.student_name" placeholder="English Full Name Of Student">
+                                          </div>
+                                            <div class="form-group">
+                                              <label for="start_date">Start Working Date</label>
+                                              <input class="form-control" name="start_date" #start_date="ngModel" [(ngModel)]="experience.start_date" placeholder="Start Working Date">
+                                            </div>
+                                        <div class="form-group">
+                                          <label for="leave_date">Leave Working Date</label>
+                                          <input class="form-control" name="leave_date" #leave_date="ngModel" [(ngModel)]="experience.leave_date" placeholder="Leave Working Date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company_name">Company Name</label>
+                                            <input class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="experience.company_name" placeholder="Name of Company or Institude">
+                                        </div>  
+                                        <div class="form-group">
+                                            <label for="position">Position of Working</label>
+                                            <input class="form-control" name="position" #position="ngModel" [(ngModel)]="experience.position" placeholder="Leave Working Date">
+                                        </div>  
+                                    <div class="form-group">
+                                      <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                                      <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                                    </div>
+                                  <!-- </fieldset> -->
+                                  </form>
+                              </div>
+                              </div>
+                            </tr>
+                      </tbody>
+                      </table>
+                  </div>
+                  
+              </div>
+            </div>
+      </div>
+    </div>
+</div>

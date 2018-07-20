@@ -31,6 +31,10 @@ import { UpdatestudentComponent } from './updatestudent/updatestudent.component'
 import { AttendencesListComponent } from './attendences-list/attendences-list.component';
 import { InterviewComponent } from './interview/interview.component';
 import { InterviewListComponent } from './interview-list/interview-list.component';
+import { FamilyComponent } from './family/family.component';
+import { FamilyListComponent } from './family-list/family-list.component';
+import { ExperiencesComponent } from './experiences/experiences.component';
+import { ExperiencesListComponent } from './experiences-list/experiences-list.component';
 
 const forRoutes: Routes = [
   { path : 'fujiyama', component: FujiyamaComponent },
@@ -39,8 +43,12 @@ const forRoutes: Routes = [
   { path : 'signup', component: SingupComponent },
   { path : 'student', component: StudentListComponent },
   { path : 'student-list', component: StudentListComponent },
+  { path : 'experiences', component: ExperiencesComponent },
+  { path : 'experiences-list', component: ExperiencesListComponent },
   { path : 'interview', component: InterviewComponent },
   { path : 'interview-list', component: InterviewListComponent },
+  { path : 'family', component: FamilyComponent },
+  { path : 'family-list', component: FamilyListComponent },
   { path : 'attendance', component: AttendenceComponent },
   { path : 'attendances-list', component: AttendencesListComponent },
   { path : 'student/detail/:$key', component: DetailComponent },
@@ -69,7 +77,11 @@ const forRoutes: Routes = [
     UpdatestudentComponent,
     AttendencesListComponent,
     InterviewComponent,
-    InterviewListComponent
+    InterviewListComponent,
+    FamilyComponent,
+    FamilyListComponent,
+    ExperiencesComponent,
+    ExperiencesListComponent
   ],
   imports: [
     ToastrModule.forRoot(),
@@ -84,6 +96,6 @@ const forRoutes: Routes = [
     MatCheckboxModule
   ],
   providers: [ StudentsService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

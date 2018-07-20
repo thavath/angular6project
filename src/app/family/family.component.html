@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-aside></app-aside>
+      </div>
+      <div class="col-sm-9">
+          <div style="margin-top: 10px; background-color:white; padding: 20px;">
+              <div class="bg-primary text-center">
+                <h3 style="padding: 5px">Family Entry</h3>
+              </div>
+              <div>
+                <form #familyForm="ngForm" (ngSubmit)="onSubmit(familyForm)" class="form-group">
+                  <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="familyService.selectedFamily.$key">
+                    <div class="form-group">
+                          <label for="student_name">Student Name</label>
+                          <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="familyService.selectedFamily.student_name" placeholder="English Full Name Of Student">
+                      </div>
+                        <div class="form-group">
+                          <label for="name">Family Name</label>
+                          <input class="form-control" name="name" #name="ngModel" [(ngModel)]="familyService.selectedFamily.name" placeholder="Name of Family">
+                        </div>
+                    <div class="form-group">
+                      <label for="age">Age</label>
+                      <input class="form-control" name="age" #age="ngModel" [(ngModel)]="familyService.selectedFamily.age" placeholder="How many year old?">
+                    </div>
+                    <div class="form-group">
+                        <label for="job">Job</label>
+                        <input class="form-control" name="job" #job="ngModel" [(ngModel)]="familyService.selectedFamily.job" placeholder="Kind of Job">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">Position of Working</label>
+                        <input class="form-control" name="position" #position="ngModel" [(ngModel)]="familyService.selectedFamily.position" placeholder="Job Position or Resposibilities">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input class="form-control" name="status" #status="ngModel" [(ngModel)]="familyService.selectedFamily.status" placeholder="Live or Dead">
+                    </div>
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Submit Family</button> || 
+                  <button class="btn btn-primary" type="button" (click)="resetForm(familyForm)"> <i class="fa fa-repeat"> </i> Reset</button>
+                </div>
+              </form>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
