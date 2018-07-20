@@ -15,13 +15,88 @@
                   <br> <br>        
                 </form>  
               </div>
-              <div *ngIf="this.searchInterview && this.display">
-                  <ul *ngFor="let s of searchInterview">
-                    <li>{{ s.student_name }}</li>
-                    <li>{{ s.status }}</li>
-                    <li>{{ s.interview_date }}</li>
-                  </ul>
-                </div>
+                          <div *ngIf="this.searchInterview && this.display">
+                            <table class="table table-sm table-hover">
+                              <thead class="bg-primary" *ngIf="this.search != ''">
+                              <tr>
+                                <th>Student Name</th>
+                                <th>Interview Date</th>
+                                <!-- <th>Email</th> -->
+                                <th>Inverview Type</th>
+                                <th>Company Name</th>    
+                                <th>Status</th>
+                                <th>Job History</th>
+                                <th>Certificate</th>
+                                <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let interview of searchInterview">
+                                <td>{{ interview.student_name }}</td>
+                                <td>{{ interview.interview_date }}</td>
+                                <td>{{ interview.interview_type }}</td>
+                                <td>{{ interview.company_name }}</td>
+                                <td>{{ interview.status }}</td>
+                                <td>{{ interview.job_history }}</td> 
+                                <td>{{ interview.certificate }}</td> 
+                                <td>
+                                    <a class="btn" (click)="onEdit(interview)">
+                                      <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                    <a class="btn" (click)="onDelete(interview.$key)">
+                                      <i class="fa fa-trash-o"></i>
+                                    </a>
+                                  </td>
+                                <div *ngIf="editState && itemToEdit.$key == interview.$key" class="modaledit">
+                                  <div style="margin: 10px; margin-right: 90px; margin-left: 400px; background-color: rgb(255, 255, 255); padding: 20px; border: 5px solid royalblue;">
+                                    <h3>Editing Interview of {{ interview.student_name }}</h3>
+                                    <form #interviewForm="ngForm" (ngSubmit)="onUpdate(interview)" class="form-group">
+                                      <!-- <fieldset> -->
+                                      <!-- <legend>Editing Student</legend> -->
+                                      
+                                      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="interview.$key">
+                                          <div class="form-group">
+                                                <label for="student_name">Student Name</label>
+                                                <input type="text" class="form-control" name="student_name" #student="ngModel" [(ngModel)]="interview.student_name">
+                                            </div>
+                                              <div class="form-group">
+                                                <label for="interview_date">Interview Date</label>
+                                                <input class="form-control" name="interview_date" #interview_date="ngModel" [(ngModel)]="interview.interview_date">
+                                              </div>
+                                          <div class="form-group">
+                                            <label for="interview_type">Interview Type</label>
+                                            <input class="form-control" name="interview_type" #interview_type="ngModel" [(ngModel)]="interview.interview_type" >
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="company_name">Company Name</label>
+                                              <input class="form-control" name="company_name" #company_name="ngModel" [(ngModel)]="interview.company_name">
+                                          </div>
+                
+                                          <div class="form-group">
+                                              <label for="status">Status</label>
+                                              <input class="form-control" name="status" #status="ngModel" [(ngModel)]="interview.status" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="job_history">Job History</label>
+                                                <input class="form-control" name="job_history" #job_history="ngModel" [(ngModel)]="interview.job_history">
+                                            </div>
+                                            
+                                          <div class="form-group">
+                                              <label for="certificate">Certificate</label>
+                                              <input class="form-control" name="certificate" #certificate="ngModel" [(ngModel)]="interview.certificate" >
+                                            </div>
+                                      <div class="form-group">
+                                        <button class="btn btn-primary" type="submit"> <i class="fa fa-floppy-o"> </i> Update</button> || 
+                                        <button class="btn btn-primary" type="button" (click)="clearState()"> <i class="fa fa-repeat"> </i> Cancel</button>
+                                      </div>
+                                    <!-- </fieldset> -->
+                                    </form>
+                                  </div>
+                                  </div>
+                                </tr>
+                          </tbody>
+                          </table>
+                            </div>
               <div *ngIf="interviewList">
                   
                   <div *ngIf="this.displaySearch">

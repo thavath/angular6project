@@ -16,6 +16,11 @@ export class AttendencesListComponent implements OnInit {
   editState: boolean = false;
   itemToEdit: Attendence;
 
+  searchAttendence: Attendence[];
+  private displaySearch: Boolean = true;
+  private search: string = "";
+  private display: Boolean = false;
+
   constructor(private attendenceService: AttendenceService, private tostr : ToastrService) { }
 
   ngOnInit() {
@@ -29,7 +34,27 @@ export class AttendencesListComponent implements OnInit {
       });
     });
   }
-
+  onSearch(){
+    this.displaySearch = false;
+    this.searchAttendence = [];
+    this.attendenceList.forEach(element => {
+      if (this.search == element.student_name || this.search == element.study_date.toString()){
+        this.searchAttendence.push(element); 
+      }
+    });
+    if(this.searchAttendence.length <= 0 && this.search == ""){
+      // this.displaySearch = false;
+      this.displaySearch = true;
+      console.log("Search not found..");
+    }
+    if(this.searchAttendence.length > 0 ){  
+      this.searchAttendence.forEach(item => {
+        console.log(item.student_name);
+        console.log(item.study_date);
+        this.display = true;
+      });
+    }
+  }
   onEdit(attendence: Attendence) {
     this.attendenceService.selectedAttendence = Object.assign({}, attendence);
     this.editState = true;
