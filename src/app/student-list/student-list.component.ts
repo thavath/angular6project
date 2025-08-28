@@ -1,60 +1,71 @@
 import { StudentsService } from './../services/students.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Student } from '../services/student.model';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.css'],
-  providers: [ StudentsService ]
+  providers: [ StudentsService ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StudentListComponent implements OnInit {
+export class StudentListComponent implements OnInit, OnDestroy {
   studentList: Student[];
-
   searchStudent: Student[];
   displaySearch: Boolean = true;
   search: string = "";
   display: Boolean = false;
+  private subscription: Subscription;
 
- 
-  constructor(private studentService: StudentsService, private tostr: ToastrService ,private route: Router) { }
+  constructor(
+    private studentService: StudentsService, 
+    private tostr: ToastrService, 
+    private route: Router,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
-    //getData and convert json to Student object
-    var datas = this.studentService.getData();
-    datas.snapshotChanges().subscribe(item => {
+    // getData and convert json to Student object
+    const datas = this.studentService.getData();
+    this.subscription = datas.snapshotChanges().subscribe(item => {
       this.studentList = [];
       item.forEach(element => {
-        var data = element.payload.toJSON();
+        const data = element.payload.toJSON();
         data["$key"] = element.key;
         this.studentList.push(data as Student);        
       });
+      this.cdr.markForCheck(); // Trigger change detection for OnPush
     });
   }
-  onSearch(){
-    this.displaySearch = false;
-    this.searchStudent = [];
-    this.studentList.forEach(element => {
-      if (this.search == element.english_name || this.search == element.japanese_level || this.search == element.sending_company){
-        this.searchStudent.push(element); 
-      }
-    });
-    if(this.searchStudent.length <= 0 && this.search == ""){
-      // this.displaySearch = false;
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+  onSearch() {
+    if (!this.search.trim()) {
       this.displaySearch = true;
-      console.log("Search not found..");
+      this.display = false;
+      this.cdr.markForCheck();
+      return;
     }
-    if(this.searchStudent.length > 0 ){  
-      this.searchStudent.forEach(item => {
-        console.log(item.english_name);
-        console.log(item.japanese_level);
-        console.log(item.sending_company);
-        console.log(item.phone_number);
-        this.display = true;
-      });
-    }
+
+    this.displaySearch = false;
+    const searchTerm = this.search.toLowerCase().trim();
+    
+    // Optimized search with case-insensitive partial matching
+    this.searchStudent = this.studentList.filter(student => 
+      student.english_name?.toLowerCase().includes(searchTerm) ||
+      student.japanese_level?.toLowerCase().includes(searchTerm) ||
+      student.sending_company?.toLowerCase().includes(searchTerm)
+    );
+    
+    this.display = this.searchStudent.length > 0;
+    this.cdr.markForCheck(); // Trigger change detection for OnPush
   }
   onUpdate(stu){
     this.route.navigate(['/student/edit', stu.$key]);

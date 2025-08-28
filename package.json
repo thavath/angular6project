@@ -5,10 +5,12 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
+    "build:prod": "ng build --prod --build-optimizer --vendor-chunk --stats-json",
+    "bundle-analyzer": "npx webpack-bundle-analyzer dist/studentsadmin/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "postinstall": "ng build --prod --build-optimizer"
   },
   "private": true,
   "dependencies": {
@@ -57,7 +59,9 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1"
+    "tslint": "~5.9.1",
+    "compression-webpack-plugin": "^2.0.0",
+    "webpack-bundle-analyzer": "^3.0.0"
   },
   "engines": {
     "node": "10.4.0",
