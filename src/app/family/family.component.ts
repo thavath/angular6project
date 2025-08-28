@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   providers: [ FamilyService ]
 })
 export class FamilyComponent implements OnInit {
-  constructor(private familyService: FamilyService, private tostr: ToastrService) { }
+  constructor(public familyService: FamilyService, private tostr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();

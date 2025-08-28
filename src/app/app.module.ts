@@ -13,7 +13,7 @@ import { AsideComponent } from './layout/aside/aside.component';
 import { ArticleComponent } from './layout/article/article.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+ 
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -24,6 +24,7 @@ import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './authetication/login/login.component';
 import { SingupComponent } from './authetication/singup/singup.component';
+import { AdminComponent } from './authetication/admin/admin.component';
 import { ToastrModule } from 'ngx-toastr';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -81,13 +82,13 @@ const forRoutes: Routes = [
     FamilyComponent,
     FamilyListComponent,
     ExperiencesComponent,
-    ExperiencesListComponent
+    ExperiencesListComponent,
+    AdminComponent
   ],
   imports: [
     ToastrModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,

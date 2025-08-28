@@ -15,12 +15,12 @@ export class FamilyListComponent implements OnInit {
   editState: boolean = false;
   itemToEdit: Family;
   
-  private searchFamily: Family[];
-  private displaySearch: Boolean = true;
-  private search: string = "";
-  private display: Boolean = false;
+  public searchFamily: Family[];
+  public displaySearch: Boolean = true;
+  public search: string = "";
+  public display: Boolean = false;
 
-  constructor(private familyService: FamilyService, private tostr : ToastrService) { }
+  constructor(public familyService: FamilyService, private tostr : ToastrService) { }
   ngOnInit() {
     var x = this.familyService.getData();
     x.snapshotChanges().subscribe(item => {

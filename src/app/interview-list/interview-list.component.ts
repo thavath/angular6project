@@ -16,9 +16,9 @@ export class InterviewListComponent implements OnInit {
   itemToEdit: Interview;
   
   searchInterview: Interview[];
-  private displaySearch: Boolean = true;
-  private search: string = "";
-  private display: Boolean = false;
+  public displaySearch: Boolean = true;
+  public search: string = "";
+  public display: Boolean = false;
 
   constructor(private interviewService: InterviewsService, private tostr : ToastrService) { }
   ngOnInit() {

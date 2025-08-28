@@ -17,9 +17,9 @@ export class AttendencesListComponent implements OnInit {
   itemToEdit: Attendence;
 
   searchAttendence: Attendence[];
-  private displaySearch: Boolean = true;
-  private search: string = "";
-  private display: Boolean = false;
+  public displaySearch: Boolean = true;
+  public search: string = "";
+  public display: Boolean = false;
 
   constructor(private attendenceService: AttendenceService, private tostr : ToastrService) { }
 
