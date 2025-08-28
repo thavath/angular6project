@@ -13,7 +13,6 @@ import { AsideComponent } from './layout/aside/aside.component';
 import { ArticleComponent } from './layout/article/article.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -41,8 +40,9 @@ const forRoutes: Routes = [
   { path : 'home', component: HomeComponent },
   { path : 'signin', component: LoginComponent },
   { path : 'signup', component: SingupComponent },
-  { path : 'student', component: StudentListComponent },
-  { path : 'student-list', component: StudentListComponent },
+  { path : 'students', loadChildren: './students/students.module#StudentsModule' },
+  { path : 'student', redirectTo: 'students', pathMatch: 'full' },
+  { path : 'student-list', redirectTo: 'students/list', pathMatch: 'full' },
   { path : 'experiences', component: ExperiencesComponent },
   { path : 'experiences-list', component: ExperiencesListComponent },
   { path : 'interview', component: InterviewComponent },
@@ -51,8 +51,6 @@ const forRoutes: Routes = [
   { path : 'family-list', component: FamilyListComponent },
   { path : 'attendance', component: AttendenceComponent },
   { path : 'attendances-list', component: AttendencesListComponent },
-  { path : 'student/detail/:$key', component: DetailComponent },
-  { path : 'student/edit/:$key', component: UpdatestudentComponent },
   { path : '', component: HomeComponent },
   { path: '**', component: LoginComponent }
 
@@ -87,7 +85,6 @@ const forRoutes: Routes = [
     ToastrModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
