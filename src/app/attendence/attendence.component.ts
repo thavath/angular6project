@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AttendenceComponent implements OnInit {
 
-  constructor(private attendenceService: AttendenceService, private tostr: ToastrService) { }
+  constructor(public attendenceService: AttendenceService, private tostr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();

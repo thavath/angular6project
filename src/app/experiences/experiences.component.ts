@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ExperiencesComponent implements OnInit {
 
-  constructor(private experienceService: ExperiencesService, private tostr: ToastrService) { }
+  constructor(public experienceService: ExperiencesService, private tostr: ToastrService) { }
 
   ngOnInit() {
     this.resetForm();

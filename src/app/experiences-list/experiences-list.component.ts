@@ -16,9 +16,9 @@ export class ExperiencesListComponent implements OnInit {
   itemToEdit: Experiences;
 
   searchExperience: Experiences[];
-  private displaySearch: Boolean = true;
-  private search: string = "";
-  private display: Boolean = false;
+  public displaySearch: Boolean = true;
+  public search: string = "";
+  public display: Boolean = false;
 
   constructor(private experienceService: ExperiencesService, private tostr : ToastrService) { }
 
