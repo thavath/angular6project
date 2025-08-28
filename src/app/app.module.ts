@@ -13,7 +13,6 @@ import { AsideComponent } from './layout/aside/aside.component';
 import { ArticleComponent } from './layout/article/article.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
@@ -87,7 +86,6 @@ const forRoutes: Routes = [
     ToastrModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
